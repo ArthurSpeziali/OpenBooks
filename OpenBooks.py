@@ -191,6 +191,7 @@ for livro in books_formated:
             except:
                 print('\nNenhum livro encontrado!\n')
                 pass
-    
+
+driver.quit()
 clear_os()        
 print('Processo finalizado com êxito! Volte sempre!')
