@@ -71,7 +71,7 @@ elif opção == 'f':
                     if i == '':
                         books.remove(i)
 
-                    books_formated.append(i.replace(' ', '+'))
+                    books_formated.append(i))
                 
                 clear_os()                
                 break
