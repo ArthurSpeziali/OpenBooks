@@ -2,11 +2,14 @@
 from time import sleep
 from platform import system
 import os
+from urllib.parse import quote
 from selenium import webdriver
 import selenium.common.exceptions
 
 #Função para manipular uma URL, para evitar a pesquisa no site. Depois retorna a URL:
 def url_finder(nome: str, extensão: str):
+    nome = quote(nome)
+    
     url_base = f'https://visionvox.com.br/busca.php?pagina=Nao&busca={nome}&ext={extensão}&buscar=Buscar'    
     return url_base
     
