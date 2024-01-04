@@ -2,7 +2,6 @@
 from time import sleep
 from platform import system
 import os
-from urllib.parse import quote_plus
 from selenium import webdriver
 import selenium.common.exceptions
 
@@ -82,10 +81,9 @@ elif opção == 'f':
                 #Tira todos os espaços em brancos da lista.
                 #Substitui os espaços, e adciona em uma nova lista:                    
                 for i in books:
-                    if i == '':
-                        books.remove(i)
-
-                    books_formated.append(i)
+                    if not i == '':
+                        
+                        books_formated.append(i)
                 
                 clear_os()                
                 break
@@ -200,7 +198,7 @@ for livro in books_formated:
                 
                 try:
                     #Se achar, ele usa o cmd para usar o curl. Baixando o livro pelo link de download. Depois quebra o loop:
-                    os.system(f'cd {folder} && curl -o "{name_book}" "{link_book}"')
+                    os.system(f'cd "{folder}" && curl -o "{name_book}" "{link_book}"')
                     print(f'\nLivro baixado com êxito:\n{name_book}\n\n')
                     break
                 
