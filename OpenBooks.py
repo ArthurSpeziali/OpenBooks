@@ -6,11 +6,19 @@ from urllib.parse import quote_plus
 from selenium import webdriver
 import selenium.common.exceptions
 
+#Função da codificar o nome do livro em url. Substituindo caracteres especias por códigos de indentificação.
+#Não funcina o quote(), nem o quote_plus() do ullib.parse! O VisionVox tem sua própia codificação:
+def UrlCodVisionvox(string: str):
+    new_string = string.replace('%', '%25').replace('+', '%2B').replace('á', r'%E1').replace('ç', r'%E7').replace(' ', '+').replace('é', r'%E9').replace('ã', r'%E3').replace('â', r'%E2').replace('ê', r'%EA').replace('ó', r'%F3').replace('õ', r'%F5').replace('ô', r'%F4').replace('í', r'%ED').replace('ú', r'%FA').replace('à', r'%E0').replace('è', r'%E8').replace('ò', r'%F2').replace('ì', r'%EC').replace('ù', r'%F9').replace('!', '%21').replace('@', '%40').replace('#', '%23').replace('$', '%24').replace('&', '%26').replace('(', '%28').replace(')', '%29').replace('{', '%7B').replace('}', '%7D').replace('[', '%5B').replace(']', '%5D').replace('ª', '%AA').replace('º', '%BA').replace('=', '%3D').replace('§', '%A7').replace(':', '%3A').replace(';', '%3B').replace('/', r'%2F').replace('\\', '%5C').replace('|', '%7C').replace(',', '%2C').replace('°', '%B0').replace('?', r'%3F').replace('¬', '%AC').replace("'", '%27').replace('"', '').replace('¹', '%B9').replace('²', '%B2').replace('³', '%B3').replace('£', '%A3').replace('¢', '%A2')
+
+    return new_string
+
 #Função para manipular uma URL, para evitar a pesquisa no site. Depois retorna a URL:
 def url_finder(nome: str, extensão: str):
-    nome = quote_plus(nome)
     
+    nome = UrlCodVisionvox(nome)
     url_base = f'https://visionvox.com.br/busca.php?pagina=Nao&busca={nome}&ext={extensão}&buscar=Buscar'    
+    
     return url_base
     
 
@@ -46,10 +54,16 @@ while True:
     else:
         break
 
-#Se for manualmente, ele só substitui os espaços em brancos por um "+", pela síntaxe da URL,depois, transforma em uma lista:
+#Se for manualmente, transforma os livros em uma lista, depois, retira os espaços em branco com o strip() de cada item da lista
 if opção == 'm':
-    print('Digite todos os nomes dos livros + autores, que deseja baixar! Separe por ";".\n')
-    books = input('> ').lower().replace(' ', '+').split(';')
+    clear_os()
+    print('Digite todos os nomes dos autores + livros (Primeiro os autores!), que deseja baixar! Separe por ";;".\n')
+    books = input('> ').lower().split(';;')
+    
+    books_formated = list()
+    for b in books:
+        books_formated.append(b.strip())
+    
     
 elif opção == 'f':
     clear_os()
