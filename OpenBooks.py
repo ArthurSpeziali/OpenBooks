@@ -69,7 +69,7 @@ elif opção == 'f':
     clear_os()
     
     #Verifica se o arquivo existe, tentando abrir ele:
-    print('Digite o caminho até a legenda:\n')
+    print('Digite o caminho até o arquivo:\n')
     while True:
         pathe = input('> ').strip()
         
@@ -186,6 +186,8 @@ print('Abrindo navegador... Aguarde!')
 clear_os()
 for livro in books_formated:
     for extensão in ext_format:
+            sleep(1)
+        
             #Entra na URL formatada, com o nome do livro e extensão
             driver.get(url_finder(livro, extensão))
             
