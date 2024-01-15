@@ -109,11 +109,14 @@ while True:
 
 sleep(0.5)
 clear_os()
-print('Digite na ordem qual é a preferencia para o formato dos arquivos. Separe por ";". Pdf, EPub, Txt [P/E/T]:\n')
+print('Digite na ordem qual é a preferencia para o formato dos arquivos.  Pdf, EPub, Txt [P/E/T] (Se quiser só baixar o livro de uma extensão, digite os três digitos da mesma letra:):\n')
 while True:
     #Calcula se a ordem das extensões do arquivo digitada são válidas:
     ext = input('> ').strip().lower()
-
+    
+    if len(ext) == 1:
+        break
+    
     #Tem que ter obrigatóriamente 3 dígitos:
     if len(ext) != 3:
         print('\nOrdem inválida, tente novamente!\n')
