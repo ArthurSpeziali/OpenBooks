@@ -12,6 +12,7 @@ def UrlCodVisionvox(string: str):
 
     return new_string
 
+
 #Função para manipular uma URL, para evitar a pesquisa no site. Depois retorna a URL:
 def url_finder(nome: str, extensão: str):
     
@@ -83,7 +84,7 @@ elif opção == 'f':
                 for i in books:
                     if not i == '':
                         
-                        books_formated.append(i)
+                        books_formated.append(i.lower())
                 
                 clear_os()                
                 break
@@ -107,6 +108,8 @@ while True:
     except:
         print('\nA pasta já existe, digite outro nome, tente novamente!\n')
 
+
+
 sleep(0.5)
 clear_os()
 print('Digite na ordem qual é a preferencia para o formato dos arquivos.  Pdf, EPub, Txt [P/E/T]  (Se quiser só baixar o livro de uma extensão, digite os três digitos da mesma letra:):\n')
@@ -122,6 +125,7 @@ while True:
         print('\nOrdem inválida, tente novamente!\n')
     
     #Tem que ter somente aquelas 3 letras:
+  
     else:
         ext_v = False
         
